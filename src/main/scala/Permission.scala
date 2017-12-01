@@ -13,6 +13,9 @@ class Permission(scope: Scope, attributes: Option[List[String]] = None) {
     else
       scopePermitted
   }
+
+  def copy(scope: Scope = scope, attributes: Option[List[String]] = attributes): Permission =
+    Permission(scope, attributes)
 }
 
 object Permission {

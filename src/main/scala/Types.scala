@@ -1,5 +1,5 @@
-import scala.collection.immutable.HashMap
+import Permission._
 
 package object Types {
-  type Data = HashMap[String, HashMap[String, HashMap[String, Permission]]]
+  type Data = Map[String, Map[String, Map[String, Permission]]]
 }
