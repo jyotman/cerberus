@@ -1,4 +1,5 @@
 object Checker {
+
   def check(attributesToCheck: List[String], attributes: List[String]): Boolean = attributesToCheck match {
     case head :: tail => check(head, attributes) && check(tail, attributes)
     case Nil => true

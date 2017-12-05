@@ -1,25 +1,38 @@
 import Checker.check
-import Enums.{ANY, NONE, Scope}
 
-class Permission(scope: Scope, attributes: Option[List[String]] = None) {
-  def any: Boolean = scope == ANY
+class Permission(val own: Boolean = false, val any: Boolean = false, val ownAttributes: Option[List[String]] = None,
+                 val anyAttributes: Option[List[String]] = None) {
 
-  def own: Boolean = scope != NONE
+  def any(attributesToCheck: List[String]): Boolean =
+    any && check(attributesToCheck, anyAttributes.get)
 
-  def context(own: Boolean, attributesToCheck: Option[List[String]] = None): Boolean = {
-    val scopePermitted = if (own) scope != NONE else scope == ANY
-    if (attributesToCheck.isDefined && attributes.isDefined)
-      scopePermitted && check(attributesToCheck.get, attributes.get)
+  def own(attributesToCheck: List[String]): Boolean = {
+    if (own)
+      check(attributesToCheck, ownAttributes.get)
     else
-      scopePermitted
+      any(attributesToCheck)
   }
 
-  def copy(scope: Scope = scope, attributes: Option[List[String]] = attributes): Permission =
-    Permission(scope, attributes)
+  def merge(permission: Permission): Permission = {
+    if (permission.own)
+      copy(own = permission.own, ownAttributes = permission.ownAttributes)
+    else
+      copy(any = permission.any, anyAttributes = permission.anyAttributes)
+  }
+
+  def copy(own: Boolean = own, any: Boolean = any, ownAttributes: Option[List[String]] = ownAttributes,
+           anyAttributes: Option[List[String]] = anyAttributes): Permission =
+    Permission(own, any, ownAttributes, anyAttributes)
+
+  override def toString: String =
+    s"own=$own, any=$any, ownAttributes=$ownAttributes, anyAttributes=$anyAttributes"
 }
 
 object Permission {
-  def apply(scope: Scope, attributes: Option[List[String]] = None): Permission = new Permission(scope, attributes)
 
-  val EmptyPermission = apply(NONE)
+  def apply(own: Boolean = false, any: Boolean = false, ownAttributes: Option[List[String]] = None,
+            anyAttributes: Option[List[String]] = None): Permission =
+    new Permission(own, any, ownAttributes, anyAttributes)
+
+  val EmptyPermission = apply()
 }
