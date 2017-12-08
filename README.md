@@ -20,27 +20,33 @@ Read more about [RBAC](https://en.wikipedia.org/wiki/Role-based_access_control) 
     
 ## Basic Example
 
-    import Dsl._
-    import Types.Data
+```scala
+import Dsl._
+import Types.Data
     
-    val data: Data = ("user" can (
-          ("read" any "project" attributes "title" & "description" & "createdOn") also
-            ("read" own "project" attributes "title" & "!description") also
-            ("create" own "project") also
-            ("update" own "clap")
-          )) and
-          ("curator" can (
-            ("read" any "project") also
-              ("curate" any "project")
-            ))
+val data: Data = 
+    ("user" can (
+      ("read" any "project" attributes "title" & "description" & "!createdOn") also
+        ("read" own "project" attributes "title" & "description") also
+        ("create" own "project") also
+        ("update" own "profile")       
+      )) and
+      ("curator" can (
+        ("read" any "project") also
+          ("update" any "project") also
+          ("delete" any "project")
+      ))
     
-    val cerberus = Cerberus(data)
+val cerberus = Cerberus(data)
 
-    cerberus.can("user", "create", "project").any // false
-    cerberus.can("user", "create", "project").own // true
-    cerberus.can("user", "read", "project").any(List("createdOn")) // false
-    cerberus.can("user", "read", "project").any(List("title", "description")) // true
+cerberus.can("user", "create", "project").any // false
+cerberus.can("user", "create", "project").own // true
+cerberus.can("user", "read", "project").any(List("createdOn")) // false
+cerberus.can("user", "read", "project").any(List("title", "description")) // true
+```
     
 ## Documentation
 
 Work in Progress
+
+### Inspired by [Access Control](https://github.com/onury/accesscontrol).
