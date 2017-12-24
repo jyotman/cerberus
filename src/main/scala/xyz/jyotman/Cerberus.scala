@@ -1,7 +1,7 @@
 package xyz.jyotman
 
-import xyz.jyotman.Permission.EmptyPermission
 import xyz.Types.Data
+import xyz.jyotman.Permission.EmptyPermission
 
 class Cerberus(data: Data) {
 
@@ -13,6 +13,8 @@ class Cerberus(data: Data) {
     else
       EmptyPermission
   }
+
+  def roles: Iterable[String] = data.keys
 }
 
 object Cerberus {
