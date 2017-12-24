@@ -1,3 +1,5 @@
+package xyz.jyotman
+
 import scala.collection.immutable.HashMap
 
 object Dsl {

@@ -1,4 +1,6 @@
-import Checker.check
+package xyz.jyotman
+
+import xyz.jyotman.Checker.check
 
 class Permission(val own: Boolean = false, val any: Boolean = false, val ownAttributes: Option[List[String]] = None,
                  val anyAttributes: Option[List[String]] = None) {

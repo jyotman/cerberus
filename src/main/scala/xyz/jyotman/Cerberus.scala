@@ -1,5 +1,7 @@
-import Permission.EmptyPermission
-import Types.Data
+package xyz.jyotman
+
+import xyz.jyotman.Permission.EmptyPermission
+import xyz.Types.Data
 
 class Cerberus(data: Data) {
 

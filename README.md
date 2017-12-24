@@ -1,4 +1,4 @@
-# Cerberus
+# xyz.jyotman.Cerberus
 
 <p align="center">
   <a href="https://yarnpkg.com/">
@@ -37,7 +37,7 @@ val data: Data =
           ("delete" any "project")
       ))
     
-val cerberus = Cerberus(data)
+val cerberus = xyz.jyotman.Cerberus(data)
 
 cerberus.can("user", "create", "project").any // false
 cerberus.can("user", "create", "project").own // true

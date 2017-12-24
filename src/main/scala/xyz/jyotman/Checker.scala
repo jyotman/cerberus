@@ -1,3 +1,5 @@
+package xyz.jyotman
+
 object Checker {
 
   def check(attributesToCheck: List[String], attributes: List[String]): Boolean = attributesToCheck match {
