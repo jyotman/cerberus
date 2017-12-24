@@ -16,13 +16,14 @@ Read more about [RBAC](https://en.wikipedia.org/wiki/Role-based_access_control) 
 
     resolvers += Resolver.bintrayRepo("jyotman","maven")
 
-    libraryDependencies += "jyotman" %% "cerberus" % "0.1"
+    libraryDependencies += "jyotman" %% "cerberus" % "0.0.2"
     
 ## Basic Example
 
 ```scala
-import Dsl._
-import Types.Data
+import xyz.Types.Data
+import xyz.jyotman.Cerberus
+import xyz.jyotman.Dsl._
     
 val data: Data = 
     ("user" can (
