@@ -16,7 +16,7 @@ Read more about [RBAC](https://en.wikipedia.org/wiki/Role-based_access_control) 
 
     resolvers += Resolver.bintrayRepo("jyotman","maven")
 
-    libraryDependencies += "jyotman" %% "cerberus" % "0.0.4"
+    libraryDependencies += "xyz.jyotman" %% "cerberus" % "0.0.4"
     
 ## Basic Example
 
