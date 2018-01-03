@@ -4,7 +4,7 @@ version := "0.0.3"
 
 scalaVersion := "2.12.4"
 
-organization := "jyotman"
+organization := "xyz.jyotman"
 
 licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 
