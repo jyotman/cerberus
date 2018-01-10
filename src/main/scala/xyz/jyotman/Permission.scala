@@ -6,11 +6,11 @@ class Permission(val own: Boolean = false, val any: Boolean = false, val ownAttr
                  val anyAttributes: Option[List[String]] = None) {
 
   def any(attributesToCheck: List[String]): Boolean =
-    any && check(attributesToCheck, anyAttributes.get)
+    anyAttributes.isDefined && any && check(attributesToCheck, anyAttributes.get)
 
   def own(attributesToCheck: List[String]): Boolean = {
     if (own)
-      check(attributesToCheck, ownAttributes.get)
+      ownAttributes.isDefined && check(attributesToCheck, ownAttributes.get)
     else
       any(attributesToCheck)
   }
