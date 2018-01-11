@@ -15,4 +15,6 @@ scmInfo := Some(
   )
 )
 
+resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
+
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
