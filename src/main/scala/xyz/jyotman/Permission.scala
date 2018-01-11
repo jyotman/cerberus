@@ -12,7 +12,7 @@ class Permission(val own: Boolean = false, val any: Boolean = false, val ownAttr
     if (own)
       ownAttributes.isDefined && check(attributesToCheck, ownAttributes.get)
     else
-      any(attributesToCheck)
+      any && any(attributesToCheck)
   }
 
   def merge(permission: Permission): Permission = {
