@@ -6,6 +6,8 @@
   </a>
 </p>
 
+[![Build Status](https://travis-ci.org/jyotman/cerberus.svg?branch=master)](https://travis-ci.org/jyotman/cerberus)
+
 Lightweight Role and Attribute based Access Control for Scala.
 
 Easy to use DSL for assigning permissions to different roles.
